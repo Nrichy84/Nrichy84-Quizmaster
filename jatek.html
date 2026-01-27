@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizmaster – Szabályzat</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap');
+
+    body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3em;
+      margin-bottom: 0.2em;
+      color: #ff0000;
+      text-shadow: 0 0 20px #ff0000;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #ddd;
+      margin-bottom: 30px;
+      font-style: italic;
+      max-width: 600px;
+    }
+
+    .user {
+      margin-bottom: 20px;
+      font-size: 0.9em;
+      color: #ff6666;
+    }
+
+    .logout {
+      background: #ff0000;
+      border: none;
+      padding: 12px 30px;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff0000;
+      transition: all 0.3s;
+    }
+
+    .logout:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #ff3333;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1></h1>
+
+  <div class="user" id="userInfo"></div>
+
+  <p>
+    helo word
+    <!-- IDE JÖHET A TELJES SZABÁLYZAT SZÖVEG -->
+  </p>
+
+  <button class="logout" onclick="kijelentkezes()">Kijelentkezés</button>
+
+  <footer>
+    © 2025 Quizmaster – Minden jog fenntartva
+  </footer>
+
+  <script>
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    const user = JSON.parse(loggedInUser);
+    if (!user) {
+      alert("Előbb jelentkezz be!");
+      window.location.href = "bejelentkezes.html";
+    } else {
+      document.getElementById("userInfo").innerText =
+        "Bejelentkezve mint: " + user.username;
+    }
+
+    function kijelentkezes() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+  </script> 
+  <script src="app.js"></script>
+
+</body>
+</html>
